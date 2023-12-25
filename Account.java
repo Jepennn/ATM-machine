@@ -30,14 +30,20 @@ public class Account {
         return pinCode;
     }
 
-    //Methods to handel saving account
-    
-    //set saving account balance
+    //##############################################
+
+    //set savingaccount balance
     public void setSavingaccountbalance(double amount)
     {
         savingBalance = amount;
     }
+    //get savingaccount balance
+    public double getSavingAccountBalance()
+    {
+        return savingBalance;
+    }
 
+    //SavingAccount withdrawn
     public void withDrawSavingAccount(double amount) throws IOException
     {
         if(amount > savingBalance)
@@ -52,10 +58,30 @@ public class Account {
         }
     }
 
+    //################################################
+    //set checkingaccountbalance
+    public void setCheckingBalance(double amount)
+    {
+        checkingBalance = amount;
+    }
+
+    //get checkingAccountbalance
+    public double getCheckingBalance(double amount)
+    {
+        return checkingBalance;
+    }
+    
+    //Checkingaccount withdrawn 
     public void withDrawCheckingAccount(double amount) throws IOException
     {
         if(amount > checkingBalance){
             throw new IOException("Not enough money, negative balance is not possible");
+        }
+        else
+        {
+            checkingBalance = checkingBalance - amount;
+            System.out.println(amount + "is now withdrawn" + "\n");
+            System.out.println("Your current balance left on the account is" + checkingBalance);
         }
 
     }

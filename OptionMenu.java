@@ -37,10 +37,11 @@ public class OptionMenu extends Account {
                 System.out.println("Invalid characters, only numbers" + "\n");
                 x = 2;  
             }
-            //Checks the costumer has inputed correct information
-        } while(x == 1;)
 
-        
+        } while(x == 1);
+
+        //Checks the costumer has inputed correct information
+        for()
     }
 }
 
