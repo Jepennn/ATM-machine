@@ -58,15 +58,18 @@ public class Account {
         }
     }
 
+    //Deposit saving account
+
     //################################################
+
     //set checkingaccountbalance
     public void setCheckingBalance(double amount)
     {
-        checkingBalance = amount;
+        checkingBalance = checkingBalance + amount;
     }
 
     //get checkingAccountbalance
-    public double getCheckingBalance(double amount)
+    public double getCheckingBalance()
     {
         return checkingBalance;
     }
@@ -85,4 +88,6 @@ public class Account {
         }
 
     }
+
+    //Deposit checking account
 }
