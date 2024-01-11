@@ -113,7 +113,7 @@ public class OptionMenu extends Account {
         }
     }
 
-    public void getSavingAccount()
+    public void getSavingAccount() throws IOException
     {
         System.out.println("Saving Account");
         System.out.println("Type 1 - Balance");
@@ -128,14 +128,17 @@ public class OptionMenu extends Account {
             System.out.println("Saving Account Balance is: " + moneyFormat.format(getCheckingBalance()));
                 break;
             case 2:
-
+            withDrawSavingAccount();
                 break;
             case 3:
+            depositSavingAccount();
                 break;
             case 4:
+            getAccountType();
                 break;
-        
             default:
+            System.out.println("Invalid choice, please enter a valid choice: ");
+            getSavingAccount();
                 break;
         }
 

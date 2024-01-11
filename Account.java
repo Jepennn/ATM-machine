@@ -68,6 +68,24 @@ public class Account {
     }
 
     //Deposit saving account
+    public void depositSavingAccount() throws IOException
+    {
+        if(savingBalance < 0)
+        {
+            throw new IOException("Negative balance is not possible");
+        }
+
+        System.out.println("Your current balance is" + moneyFormat.format(getSavingAccountBalance()));
+        System.out.println("Enter the amount you want to deposit: ");
+
+        double amount = input.nextDouble();
+
+        savingBalance = savingBalance + amount;
+        System.out.println(amount + "is now deposit to your saving account");
+        System.out.println("Your current balance on you saving account is" + savingBalance);
+    }
+
+
 
     //################################################
 
@@ -104,8 +122,13 @@ public class Account {
     }
 
     //Deposit checking account
-    public void depositCheckingAccount()
+    public void depositCheckingAccount() throws IOException
     {
+        if(checkingBalance < 0)
+        {
+            throw new IOException("Negative balance is not possible");
+        }
+
         System.out.println("Your current balance is" + moneyFormat.format(getCheckingBalance()));
         System.out.println("Enter the amount you want to deposit: ");
 
