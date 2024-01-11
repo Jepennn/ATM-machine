@@ -1,8 +1,12 @@
 
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.Scanner;
 
 public class Account {
+
+    Scanner input = new Scanner(System.in);
+    DecimalFormat moneyFormat = new DecimalFormat("'$'###,##0.00");
 
     private int customerNumber;
     private int pinCode;
@@ -44,8 +48,13 @@ public class Account {
     }
 
     //SavingAccount withdrawn
-    public void withDrawSavingAccount(double amount) throws IOException
+    public void withDrawSavingAccount() throws IOException
     {
+        System.out.println("The amount on your saving account is" + moneyFormat.format(getCheckingBalance()));
+        System.out.println("Enter the amount you want to whitdraw from your saving account: ");
+
+        double amount = input.nextDouble();
+
         if(amount > savingBalance)
         {
             throw new IOException("Not enough money, negative balance is not possible");
@@ -75,8 +84,13 @@ public class Account {
     }
     
     //Checkingaccount withdrawn 
-    public void withDrawCheckingAccount(double amount) throws IOException
+    public void withDrawCheckingAccount() throws IOException
     {
+        System.out.println("The amount on your checking account is" + moneyFormat.format(getCheckingBalance()));
+        System.out.println("Enter the amount you want to whitdraw: ");
+
+        double amount = input.nextDouble();
+
         if(amount > checkingBalance){
             throw new IOException("Not enough money, negative balance is not possible");
         }
@@ -90,4 +104,16 @@ public class Account {
     }
 
     //Deposit checking account
+    public void depositCheckingAccount()
+    {
+        System.out.println("Your current balance is" + moneyFormat.format(getCheckingBalance()));
+        System.out.println("Enter the amount you want to deposit: ");
+
+        double amount = input.nextDouble();
+
+        checkingBalance = checkingBalance + amount;
+        System.out.println(amount + "is now deposit to your checking account");
+        System.out.println("Your current balance on you checking account is" + checkingBalance);
+
+    }
 }
