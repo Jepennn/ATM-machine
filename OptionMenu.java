@@ -47,7 +47,6 @@ public class OptionMenu extends Account {
                 {
                     if(entry.getKey() == getCustomerNum() && entry.getValue() == getPin())
                     {
-                        System.out.println();
                         getAccountType();
 
                     }
@@ -65,8 +64,9 @@ public class OptionMenu extends Account {
     //Metod that ask user to chose which account they want to acsess
     public void getAccountType() throws IOException
     {
+        System.out.println();
         System.out.println("Select the account you want to access");
-        System.out.println("Type 1- Checking Account");
+        System.out.println("Type 1 - Checking Account");
         System.out.println("Type 2 - Saving Account");
         System.out.println("Type 3 - Exit");
         System.out.print("Choice: ");
@@ -97,6 +97,7 @@ public class OptionMenu extends Account {
 
     public void getCheckingAccount() throws IOException 
     {
+        System.out.println();
         System.out.println("Checking Account");
         System.out.println("Type 1 - Balance");
         System.out.println("Type 2 - Whitedraw Funds");
@@ -129,6 +130,7 @@ public class OptionMenu extends Account {
 
     public void getSavingAccount() throws IOException
     {
+        System.out.println();
         System.out.println("Saving Account");
         System.out.println("Type 1 - Balance");
         System.out.println("Type 2 - Whitedraw Funds");
@@ -140,7 +142,7 @@ public class OptionMenu extends Account {
 
         switch (choice) {
             case 1:
-            System.out.println("Saving Account Balance is: " + moneyFormat.format(getCheckingBalance()));
+            System.out.println("Saving Account Balance is: " + moneyFormat.format(getSavingAccountBalance()));
                 break;
             case 2:
             withDrawSavingAccount();
