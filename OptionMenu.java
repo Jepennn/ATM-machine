@@ -17,7 +17,7 @@ public class OptionMenu extends Account {
     {
         int x = 1; 
 
-        data.put(123, 1234);
+        data.put(123456789, 1234);
         data.put(987654321, 9876);
 
         do {
