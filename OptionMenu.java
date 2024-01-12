@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class OptionMenu extends Account {
     Scanner menuInput = new Scanner(System.in);
-    DecimalFormat moneyFormat = new DecimalFormat("'$'###,##0,00");
+    DecimalFormat moneyFormat = new DecimalFormat("'$'###,##0.00");
 
     HashMap<Integer, Integer> data = new HashMap<Integer, Integer>();
 
@@ -17,26 +17,28 @@ public class OptionMenu extends Account {
     {
         int x = 1; 
 
-        data.put(123456789, 1234);
+        data.put(123, 1234);
         data.put(987654321, 9876);
 
         do {
 
                 try 
-                {
-                    System.out.println("Welcome to the ATM-machine");
+                {   
+                    System.out.println();
+                    System.out.println("Welcome to the ATM-machine!");
 
                     //Ask user to enter accountnumber and checks if the user have an account
                     System.out.print("Enter your account number: ");
                     SetCustomer(menuInput.nextInt());
 
                     //Ask user to enter their pin-code to confirm accsess to account
-                    System.out.print("Enter your PIN-code");
+                    System.out.print("Enter your PIN-code: ");
                     SetPinCode(menuInput.nextInt());
                 } 
                 catch (Exception e) 
                 {
-                    System.out.println("Invalid characters, only numbers" + "\n");
+                    System.out.println();
+                    System.out.println("Invalid Characters. Please enter only numbers" + "\n");
                     x = 2;  
                 }
 
@@ -45,11 +47,17 @@ public class OptionMenu extends Account {
                 {
                     if(entry.getKey() == getCustomerNum() && entry.getValue() == getPin())
                     {
+                        System.out.println();
                         getAccountType();
 
                     }
-                }
-                System.out.println("Invalid Account number or PIN");   
+                    else
+                    {
+                        System.out.println();
+                        System.out.println("Wrong Customer Number or PIN-code" + "\n");
+                        getLogin();
+                    }
+                }   
             } while(x == 1);
 
     }
@@ -57,10 +65,11 @@ public class OptionMenu extends Account {
     //Metod that ask user to chose which account they want to acsess
     public void getAccountType() throws IOException
     {
-        System.out.println("Select your account you want to acsess");
+        System.out.println("Select the account you want to access");
         System.out.println("Type 1- Checking Account");
         System.out.println("Type 2 - Saving Account");
-        System.out.println("Type 3 - Exit" + "\n");
+        System.out.println("Type 3 - Exit");
+        System.out.print("Choice: ");
 
         int selection = menuInput.nextInt();
 
@@ -68,9 +77,11 @@ public class OptionMenu extends Account {
         {
             case 1:
             getCheckingAccount();
+            getAccountType();
                 break;
             case 2:
             getSavingAccount();
+            getAccountType();
                 break;
             case 3:
             getLogin();
@@ -91,6 +102,7 @@ public class OptionMenu extends Account {
         System.out.println("Type 2 - Whitedraw Funds");
         System.out.println("Type 3 - Deposit Funds");
         System.out.println("Type 4 - Exit");
+        System.out.print("Choice: ");
 
         int choice = menuInput.nextInt();
 
@@ -100,12 +112,14 @@ public class OptionMenu extends Account {
                 break;
             case 2:
             withDrawCheckingAccount();
+            getAccountType();
                 break;
             case 3:
             depositCheckingAccount();
+            getAccountType();
                 break;
             case 4:
-            getAccountType();
+            getLogin();
             default:
             System.out.println("Invalid choice, please enter a valid choice: ");
             getCheckingAccount();
@@ -120,6 +134,7 @@ public class OptionMenu extends Account {
         System.out.println("Type 2 - Whitedraw Funds");
         System.out.println("Type 3 - Deposit Funds");
         System.out.println("Type 4 - Exit");
+        System.out.print("Choice: ");
 
         int choice = menuInput.nextInt();
 
@@ -129,12 +144,14 @@ public class OptionMenu extends Account {
                 break;
             case 2:
             withDrawSavingAccount();
+            getAccountType();
                 break;
             case 3:
             depositSavingAccount();
+            getAccountType();
                 break;
             case 4:
-            getAccountType();
+            getLogin();
                 break;
             default:
             System.out.println("Invalid choice, please enter a valid choice: ");
